@@ -20,11 +20,16 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    // Use JUnit Jupiter API for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+val jmeterVersion = "5.1.1"
+val slf4jVersion = "1.7.30"
 
-    // Use JUnit Jupiter Engine for testing.
+dependencies {
+    implementation(group = "org.apache.jmeter", name = "ApacheJMeter_java", version = jmeterVersion)
+    implementation(platform("org.apache.jmeter:ApacheJMeter_parent:$jmeterVersion"))
+
+    implementation(group = "org.slf4j", name = "slf4j-api", version = slf4jVersion)
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 }
 
@@ -34,28 +39,6 @@ application {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_14
-    targetCompatibility = JavaVersion.VERSION_14
-}
-
-tasks {
-    /**
-     * Enable Java language preview features (so we can "records")
-     */
-    withType(JavaCompile::class.java) {
-        options.compilerArgs.addAll(arrayOf("--enable-preview"))
-    }
-
-    withType(Test::class.java) {
-        jvmArgs = listOf("--enable-preview")
-        useJUnitPlatform()
-    }
-
-    named<CreateStartScripts>("startScripts") {
-        defaultJvmOpts = listOf("--enable-preview")
-    }
-
-    named<JavaExec>("run") {
-        jvmArgs = listOf("--enable-preview")
-    }
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
