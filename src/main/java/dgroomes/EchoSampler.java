@@ -27,8 +27,9 @@ public class EchoSampler extends AbstractJavaSamplerClient {
         } catch (InterruptedException e) {
             log.error("Error running EchoSample JMeter test", e);
             sampleResult.setSuccessful(false);
+        } finally {
+            sampleResult.sampleEnd();
         }
-        sampleResult.sampleEnd();
         return sampleResult;
     }
 }

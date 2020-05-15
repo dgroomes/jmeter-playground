@@ -8,3 +8,5 @@ build
 
 # JMeter outputs
 jmeter.log
+*.jtl
+test-report/

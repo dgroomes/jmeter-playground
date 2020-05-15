@@ -27,3 +27,14 @@ that!
     1. You should see our custom sampler, "dgroomes.EchoServer" 
 
 ![JMeter screenshot](jmeter-screenshot.png "JMeter Screenshot")
+
+### Notes
+
+Run the test plan using JMeter's CLI mode with `jmeter -n -t echo-sampler-test-plan.jmx -l log.jtl -e -o test-report`.
+JMeter recommends using CLI mode to execute test plans and GUI to define and edit test plans.
+
+Open the test report in the browser to view the results of the test run! For example, on macOS the `open` command will
+open a `.html` in your default browser. Use `open test-report/index.html`.
+
+Before executing another run after the first run, you will have to delete the old `log.jtl` and `test-report/` 
+directory. Do so with `rm log.jtl; rm -rf test-report`
