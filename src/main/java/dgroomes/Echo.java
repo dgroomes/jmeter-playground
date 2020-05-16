@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * Echo a message.
  * <p>
- * This is a toy class. It will be used as the object-under-test in a JMeter load test.
+ * This is a toy class. It is used as the object-under-test in a JMeter load test.
  */
 public class Echo {
 
