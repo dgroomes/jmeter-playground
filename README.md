@@ -12,7 +12,7 @@ that!
 
 ### Instructions
 
-1. Use Java 14
+1. Use Java 11
 1. Install JMeter <https://jmeter.apache.org/download_jmeter.cgi>
 1. Build the project into a `.jar` file `./gradlew jar`
 1. Move the `.jar` into your JMeter installation's `lib/ext/` directory
@@ -38,3 +38,25 @@ open a `.html` in your default browser. Use `open test-report/index.html`.
 
 Before executing another run after the first run, you will have to delete the old `log.jtl` and `test-report/` 
 directory. Do so with `rm log.jtl; rm -rf test-report`
+
+### Distributing code with dependencies
+
+The original example is contrived because it does not include dependencies. Most code that you want to load test will 
+have some dependencies. The process to distribute those dependencies so that they are available to JMeter just takes a 
+bit more effort and fortunately Gradle comes to save the day.
+
+I'll illustrate this with a custom JMeter sampler that depends on the YAML Jackson extension component <https://github.com/FasterXML/jackson-dataformats-text/tree/master/yaml>.
+What makes this example even more interesting is that JMeter already includes the core Jackson libraries but does not
+include the Jackson YAML extension component library.
+
+We use the `java-library-distribution` Gradle plugin and run the `installDist` task. Next, we configure JMeter to point
+to the distribution files (i.e. the project's `.jar` and library `.jar` files). There are a couple options for 
+configuring JMeter's classpath. See <https://jmeter.apache.org/usermanual/get-started.html#classpath>. We will leverage 
+the `user.properties` file which provides some configuration hooks to customize JMeter's classpath to point to our 
+distribution directories. JMeter, by convention, will read from a `user.properties` file if it exists in the current
+directory.
+
+Instructions:
+
+1. `./gradlew installDist`
+1. `./run-serializer-test.sh`
