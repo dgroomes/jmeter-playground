@@ -13,15 +13,21 @@ The sub-projects include:
 
 ### `custom-sampler/`
 
-This sub-project creates a custom JMeter "Sampler" to exercise some custom Java code.
+This beginner-friendly sub-project creates a custom JMeter "Sampler" to exercise some custom Java code.
 
 See the README in [custom-sampler/](custom-sampler/).
+
+### `with-dependencies/`
+
+This sub-project creates a custom JMeter "Sampler" using custom Java code and additional Java library dependencies.
+
+See the README in [with-dependencies/](with-dependencies/).
 
 ## Wish List
 
 General clean-ups, TODOs and things I wish to implement for this project:
 
-* Split the Jackson library example out of `custom-sampler/` into its own sub-project `with-dependencies/`
+* DONE Split the Jackson library example out of `custom-sampler/` into its own sub-project `with-dependencies/`
 
 ## Referenced Materials
 
