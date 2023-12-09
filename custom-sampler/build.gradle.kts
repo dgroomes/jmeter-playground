@@ -6,9 +6,9 @@ repositories {
     mavenCentral()
 }
 
-val slf4jVersion = "1.7.30" // Make sure to use the version that is bundled with JMeter!
+val slf4jVersion = "1.7.36" // Make sure to use the version that is bundled with JMeter! https://github.com/apache/jmeter/blob/9f803e313abfef04516bd7b4c1e50f85b619f4f3/src/bom-thirdparty/build.gradle.kts#L139
 val jmeterVersion =
-    "5.4.1" // releases: https://jmeter.apache.org/changes_history.html AND https://github.com/apache/jmeter/releases
+    "5.6.1" // releases: https://jmeter.apache.org/changes_history.html AND https://github.com/apache/jmeter/releases
 
 dependencies {
     /*
@@ -30,6 +30,6 @@ configurations.all {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }

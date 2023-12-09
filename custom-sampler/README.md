@@ -1,13 +1,13 @@
 # custom-sampler
 
-This beginner-friendly sub-project creates a custom JMeter "Sampler" to exercise some custom Java code.
+This beginner-friendly subproject creates a custom JMeter "Sampler" to exercise some custom Java code.
 
 ---
 **Beginner Friendly**
 
-This sub-project is friendly to Java developers who are new to JMeter. However, this project is somewhat contrived
+This subproject is friendly to Java developers who are new to JMeter. However, this project is somewhat contrived
 because it does not require additional Java library dependencies. A real-world Java project would likely require additional
-library dependencies. Venture over to the `with-dependencies/` sub-project for a more sophisticated JMeter project that
+library dependencies. Venture over to the `with-dependencies/` subproject for a more sophisticated JMeter project that
 shows how to incorporate additional library dependencies and some other more advanced features.
 
 ---
@@ -24,25 +24,29 @@ that!
 
 Follow these instructions to build our example project and make its `.jar` file available to `jmeter`:
 
-1. Use Java 11
-1. Install JMeter
-   * Download it at the [offical site](https://jmeter.apache.org/download_jmeter.cgi).
-1. Build the project into a `.jar` file:
-   * `./gradlew jar`
-1. Move the `.jar` into your JMeter installation's `lib/ext/` directory
-   * For example, on my computer (it will be a different path on your computer!):
-     ```     
-     cp build/libs/custom-sampler.jar ~/dev/jmeter/lib/ext/
+1. Use Java 17
+2. Install JMeter
+   * Download it at the [offical site](https://jmeter.apache.org/download_jmeter.cgi) or use [SDKMAN!](https://sdkman.io/).
+3. Build the project into a `.jar` file:
+   * ```shell
+     ./gradlew jar
      ```
-1. Open the JMeter GUI:
-   * `jmeter`
-1. Next, follow these instructions to create a simple JMeter "Test Plan"
+4. Move the `.jar` into your JMeter installation's `lib/ext/` directory
+   * For example, on my computer (it will be a different path on your computer!):
+     ```shell
+     cp build/libs/custom-sampler.jar ~/.sdkman/candidates/jmeter/5.6/lib/ext
+     ```
+5. Open the JMeter GUI:
+   * ```shell
+     jmeter
+     ```
+6. Next, follow these instructions to create a simple JMeter "Test Plan"
    1. Right-click "Test Plan" in the left-hand menu
-   1. On the menu that appears, navigate through and select "Add" > "Threads (Users)" > "Thread Group"
-   1. Right-click the "Thread Group" element that appears in the tree on the left
-   1. On the menu that appears, navigate through and select "Add" > "Sampler" > "Java Request"
-   1. On the "Java Request" screen that appears, click the dropdown menu
-   1. You should see our custom sampler, "dgroomes.EchoServer" (like the screenshot below)
+   2. On the menu that appears, navigate through and select "Add" > "Threads (Users)" > "Thread Group"
+   3. Right-click the "Thread Group" element that appears in the tree on the left
+   4. On the menu that appears, navigate through and select "Add" > "Sampler" > "Java Request"
+   5. On the "Java Request" screen that appears, click the dropdown menu
+   6. You should see our custom sampler, "dgroomes.EchoSampler" (like the screenshot below)
 ![JMeter screenshot](jmeter-screenshot.png "JMeter Screenshot")
 
 
