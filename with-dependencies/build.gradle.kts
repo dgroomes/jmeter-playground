@@ -11,17 +11,17 @@ repositories {
     mavenCentral()
 }
 
-val slf4jVersion = "1.7.30" // Make sure to use the version that is bundled with JMeter!
-val jacksonVersion = "2.10.5" // Make sure to use the version that is bundled with JMeter!
+val slf4jVersion = "1.7.36" // Make sure to use the version that is bundled with JMeter! https://github.com/apache/jmeter/blob/9f803e313abfef04516bd7b4c1e50f85b619f4f3/src/bom-thirdparty/build.gradle.kts#L139
+val jacksonVersion = "2.15.2" // Make sure to use the version that is bundled with JMeter! https://github.com/apache/jmeter/blob/9f803e313abfef04516bd7b4c1e50f85b619f4f3/src/bom-thirdparty/build.gradle.kts#L45
 val jmeterVersion =
-    "5.4.1" // releases: https://jmeter.apache.org/changes_history.html AND https://github.com/apache/jmeter/releases
+    "5.6.1" // releases: https://jmeter.apache.org/changes_history.html AND https://github.com/apache/jmeter/releases
 
 dependencies {
     /*
     Specify the JMeter dependencies as `compileOnly`. These dependencies *do not* need to be included in the
     distribution because they are already included in JMeter itself. So, they are needed only as compile-time
     dependencies. Among the dependencies included in JMeter are SLF4J and the core Jackson modules.
-     */
+    */
     compileOnly(group = "org.apache.jmeter", name = "ApacheJMeter_java", version = jmeterVersion)
     /*
     Among the dependencies included in JMeter are SLF4J and the core Jackson modules. These dependencies are not visible
@@ -32,19 +32,19 @@ dependencies {
     of Jackson which breaks JMeter at runtime.
 
     To see the versions of dependencies that are bundled in JMeter, refer to the gradle.properties file in the JMeter project, like this https://github.com/apache/jmeter/blob/rel/v5.4.1/gradle.properties#L95
-     */
+    */
     compileOnly("org.slf4j:slf4j-api:$slf4jVersion")
     compileOnly("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 
     /*
     Here is a library that is *not* included in JMeter. So, we specify it as a "implementation" dependency and therefore
     it will get included in the distribution.
-     */
+    */
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion") {
         /*
         Some of the Jackson modules are already included in JMeter, so we should exclude them so they do not get
         included in the distribution. It would be redundant to include them twice.
-         */
+        */
         exclude(group = "com.fasterxml.jackson.core")
     }
 }
@@ -57,6 +57,6 @@ configurations.all {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }

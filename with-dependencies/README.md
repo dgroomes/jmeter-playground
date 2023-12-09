@@ -1,12 +1,13 @@
 # with-dependencies
 
-This sub-project creates a custom JMeter "Sampler" using custom Java code and additional Java library dependencies.
+This subproject creates a custom JMeter "Sampler" using custom Java code and additional Java library dependencies.
 
-## Description
+
+## Overview
 
 This project creates a custom JMeter "Sampler" to exercise some custom Java code which requires additional Java library
 dependencies. Why is this useful? Building and distributing a project with dependencies always requires some configuration
-boilerplate and loading those dependencies into `jmeter` requires even more configuration. So, this sub-project serves as
+boilerplate and loading those dependencies into `jmeter` requires even more configuration. So, this subproject serves as
 a working example for doing exactly that. 
 
 Specifically, this project defines a custom JMeter sampler that depends on the [YAML Jackson extension component](https://github.com/FasterXML/jackson-dataformats-text/tree/master/yaml).
@@ -20,11 +21,16 @@ We will leverage the `user.properties` file which provides some configuration ho
 point to the project's distribution directories. JMeter, by convention, will read from a `user.properties` file if it
 exists in the current directory.
 
-### Instructions
 
-1. Use Java 11
-1. Compile the project source code and build the distribution files:
-   * `./gradlew installDist`
-1. Run the JMeter load test:
-   * `./run-serializer-test.sh`
+## Instructions
+
+1. Use Java 17
+2. Compile the project source code and build the distribution files:
+   * ```shell
+     ./gradlew installDist
+     ```
+3. Run the JMeter load test:
+   * ```shell
+     ./run-serializer-test.sh
+     ```
 
